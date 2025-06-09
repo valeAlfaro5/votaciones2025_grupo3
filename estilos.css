@@ -14,6 +14,7 @@ h1 {
     margin-bottom: 16px;
 }
 
+
 p {
     color: #c71585;
     margin-bottom: 24px;
@@ -87,3 +88,22 @@ input[type="submit"]:hover {
     background: #e75480;
     color: #fff;
 }
+
+
+.presi_page table {
+      width: 1300px;
+      margin: auto;
+      border-collapse: collapse;
+      text-align: center;
+    }
+    .presi_page th, .presi_page td {
+      width: 50%;
+      padding: 10px;
+      border: 5px solid #ccc;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .presi_page img {
+      display: block;
+      margin: auto;
+    }

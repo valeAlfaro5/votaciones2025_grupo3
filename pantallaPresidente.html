@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" >
+<head>
+   <title >Pantalla del Presidente</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+  <div class="presi_page">
+    <h1 style="justify-content: center;">Presidentes</h1>
+    <p>Selecciona un presidente.</p>
+    <table>
+      <tr>
+      <th >Salvador Nasralla</th>
+      <th> Nasry Asfura </th>
+      <th> Rixi Moncada </th>
+      </tr>
+      <tr>
+      <td><img src="./imagenes/nasralla.jpg" alt="Salvador Nasralla" width="100"></td>
+      <td><img src="./imagenes/paip_orden.jpg" alt="Nasry Asfura" width="100"></td>
+      <td><img src="./imagenes/mocada.jpg" alt="Rixi Moncada" width="100"></td>
+      </tr>
+      <tr>
+        <td><input type="radio" value=" "name="presidente" id="nasralla " required></td>
+        <td><input type="radio" value=" "name="presidente" id="asfura"></td>
+        <td><input type="radio" value=" "name="presidente" id="moncada"></td>
+      </tr>
+    </table>  
+    <div>
+      <input type="submit" value="Votar" onclick="window.location.href='pantallaAlcalde.php'; return false;">
+      <br>
+    </div>
+  </div>
+</html>

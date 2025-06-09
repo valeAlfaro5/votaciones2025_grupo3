@@ -1,0 +1,89 @@
+body {
+    background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    color: #e75480;
+    margin-bottom: 16px;
+}
+
+p {
+    color: #c71585;
+    margin-bottom: 24px;
+}
+
+form {
+    background: #fff0f6;
+    padding: 32px 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(255, 105, 180, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 220px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ffb6c1;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background: #ff69b4;
+    color: white;
+    border: none;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.2s;
+}
+
+input[type="submit"]:hover {
+    background: #e75480;
+}
+
+.admin-btn {
+    margin-top: 10px;
+    background: #fff;
+    color: #e75480;
+    border: 1px solid #e75480;
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.admin-btn:hover {
+    background: #e75480;
+    color: #fff;
+}
+.volver-btn {
+    margin-top: 10px;
+    background: #fff;
+    color: #e75480;
+    border: 1px solid #e75480;
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.volver-btn:hover {
+    background: #e75480;
+    color: #fff;
+}

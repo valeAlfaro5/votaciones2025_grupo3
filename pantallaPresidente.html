@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="es" >
 <head>
-   <title >Pantalla del Presidente</title>
+   <title >Elección de Presidente</title>
   <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
   <div class="presi_page">
-    <h1 style="justify-content: center;">Presidentes</h1>
+    <h1 >Presidentes</h1>
     <p>Selecciona un presidente.</p>
     <table>
+      <tr> 
+        <th>Partido Liberal de Honduras</th>
+        <th>Partido Nacional de Honduras</th>
+        <th>Partido de Libertad y Refundación</th>
+      </tr>
+      <tr>
+        <td ><img src="./imagenes/plh.jpg" alt="Salvador Nasralla" height = "150"width="200"></td>
+        <td ><img src="./imagenes/pnh.png" alt="Salvador Nasralla" height = "150"width="200"></td>
+        <td ><img src="./imagenes/libre.png" alt="Salvador Nasralla" height = "150"width="200"></td>
+      </tr>
       <tr>
       <th >Salvador Nasralla</th>
-      <th> Nasry Asfura </th>
-      <th> Rixi Moncada </th>
+      <th > Nasry Asfura </th>
+      <th > Rixi Moncada </th>
       </tr>
       <tr>
-      <td><img src="./imagenes/nasralla.jpg" alt="Salvador Nasralla" width="100"></td>
-      <td><img src="./imagenes/paip_orden.jpg" alt="Nasry Asfura" width="100"></td>
-      <td><img src="./imagenes/mocada.jpg" alt="Rixi Moncada" width="100"></td>
+      <td ><img src="./imagenes/nasralla.jpg" alt="Salvador Nasralla" height = "300"width="200"></td>
+      <td ><img src="./imagenes/paip_orden.jpg" alt="Nasry Asfura" height ="300"width="200"></td>
+      <td ><img src="./imagenes/mocada.jpg" alt="Rixi Moncada" height = "300"width="200"></td>
       </tr>
       <tr>
-        <td><input type="radio" value=" "name="presidente" id="nasralla " required></td>
-        <td><input type="radio" value=" "name="presidente" id="asfura"></td>
-        <td><input type="radio" value=" "name="presidente" id="moncada"></td>
+        <td ><input type="radio" name="presidente" id="nasralla " required></td>
+        <td ><input type="radio" name="presidente" id="asfura"></td>
+        <td ><input type="radio" name="presidente" id="moncada"></td>
       </tr>
+      
     </table>  
     <div>
-      <input type="submit" value="Votar" onclick="window.location.href='pantallaAlcalde.php'; return false;">
+      <input type="submit" value="Votar" onclick="window.location.href='pantallaDiputados.php'; return false;">
       <br>
     </div>
+  </br>
   </div>
 </html>

@@ -31,16 +31,28 @@
       <td ><img src="./imagenes/mocada.jpg" alt="Rixi Moncada" height = "300"width="200"></td>
       </tr>
       <tr>
-        <td ><input type="radio" name="presidente" id="nasralla " required></td>
-        <td ><input type="radio" name="presidente" id="asfura"></td>
+        <td ><input type="radio" name="presidente" id="nasralla "></td>
+        <td ><input type="radio" name="presidente" id="asfura" ></td>
         <td ><input type="radio" name="presidente" id="moncada"></td>
       </tr>
       
     </table>  
     <div>
-      <input type="submit" value="Votar" onclick="window.location.href='pantallaDiputados.php'; return false;">
+      <input type="submit" id="btnVotar" value="Votar" onclick="window.location.href='pantallaDiputados.html'; " disabled>
+
       <br>
     </div>
   </br>
   </div>
+   <script>
+   
+    const radios = document.querySelectorAll('input[type="radio"][name="presidente"]');
+    const btnVotar = document.getElementById('btnVotar');
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        btnVotar.disabled = false;
+      });
+    });
+  </script>
+</body>
 </html>

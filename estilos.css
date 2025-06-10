@@ -53,6 +53,11 @@ input[type="submit"] {
     margin-top: 12px;
     transition: background 0.2s;
 }
+input[type="submit"]:disabled {
+    background: #e75480;
+    color: #d7d7d7;
+   
+}
 
 input[type="submit"]:hover {
     background: #e75480;
@@ -115,6 +120,66 @@ input[type="submit"]:hover {
     margin-bottom: 20px;
 }
 .presi_page p {
+    text-align: center;
+    color: #c71585;
+    margin-bottom: 20px;
+}
+
+.diputados_page table {
+      width: 1300px;
+      margin: auto;
+      border-collapse: collapse;
+      background-color: #fadad9;
+      border-radius: 20px;
+      text-align: center;
+    }
+    .diputados_page th, .diputados_page td {
+      width: 200px;
+      padding: 10px;
+      border: 5px solid #ff809f;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .diputados_page img {
+      display: block;
+      margin: auto;
+    }
+.diputados_page h1{
+    text-align: center;
+    color: #e75480;
+    margin-bottom: 20px;
+}
+.diputados_page p {
+    text-align: center;
+    color: #c71585;
+    margin-bottom: 20px;
+}
+
+.Alcalde_page table {
+      width: 1300px;
+      margin: auto;
+      border-collapse: collapse;
+      background-color: #fadad9;
+      border-radius: 20px;
+      text-align: center;
+    }
+    .Alcalde_page th, .Alcalde_page td {
+      width: 200px;
+      padding: 10px;
+      border: 5px solid #ff809f;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .Alcalde_page img {
+      display: block;
+      margin: auto;
+    }
+.Alcalde_page h1{
+    text-align: center;
+    color: #e75480;
+    margin-bottom: 20px;
+}
+.Alcalde_page p {
     text-align: center;
     color: #c71585;
     margin-bottom: 20px;

@@ -7,19 +7,20 @@
   <link rel="stylesheet" href="estilos.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
-<body>
 
+<body>
 <ul class="sidenav">
-  <li><a href="#presidente">Presidentes</a></li>
+  <li><a href="resultadosPresidente.html">Presidentes</a></li>
   <li><a href="resultadosAlcaldes.html">Alcaldes</a></li>
-  <li><a href="#diputados">Diputados</a></li>
+  <li><a href="resultadosDiputados.html">Diputados</a></li>
   <li><a href="#general">General</a></li>
+  <li><a href="LoginAdmin.htm">Regresar a Inicio</a></li>
 </ul>
 
 <div class="content">
   <h1>Resultados de Elección de Presidente</h1>
   <p>Gráfico comparativo de candidatos a la presidencia.</p>
-  <canvas id="myChart" width="400px" style="max-width: 1200px; background-color: #FFE9EF;"></canvas>
+  <canvas id="myChart" width="500px" height="500px" style="max-width: 1500px; background-color: #FFE9EF;"></canvas>
 </div>
 
 <script>
@@ -40,24 +41,26 @@
       legend: { display: false },
       title: {
         display: true,
-        text: " ",
-        fontSize: 28
+        text: "Votos por Canditado",
+        fontSize: 25
       },
       scales: {
         xAxes: [{
           ticks: {
-            fontSize: 16
+            fontSize: 18
           }
         }],
         yAxes: [{
           ticks: {
-            beginAtZero: true
+            beginAtZero: true,
+            fontSize: 18
           }
         }]
       }
     }
   });
 </script>
+
 
 </body>
 </html>

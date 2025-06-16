@@ -1,6 +1,6 @@
 body {
     background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -283,4 +283,20 @@ tablas.tabcontent {
   display: none;
   padding: 100px 20px;
   height: 100%;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Style the subnav links */
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
 }

@@ -13,7 +13,19 @@
   <li><a href="resultadosPresidente.html">Presidentes</a></li>
   <li><a href="resultadosAlcaldes.html">Alcaldes</a></li>
   <li><a href="resultadosDiputados.html">Diputados</a></li>
-  <li><a href="#general">General</a></li>
+   <li>
+    <a href="#general">General ▾</a>
+    <div class="subnav-content">
+      //remplazar los # por las rutas de los algoritmos
+      //asegurarse que las otras paginas tengan el submenu
+      <a href="#avestruz">Algoritmo del Avestruz</a>
+      <a href="#banquero1">Algoritmo del Banquero para un solo  Recursos</a>
+      <a href="#banqueroM">Algoritmo del Banquero para Varios Recursos</a>
+      <a href="#filosofos">Problema de los Filosofos Comelones</a>
+      <a href="#lectores">Problema de Lectores Escritores</a>
+      <a href="#durmiente">Problema del Barbero Durmiente</a>
+    </div>
+  </li>
   <li><a href="LoginAdmin.htm">Regresar a Inicio</a></li>
 </ul>
 
@@ -111,6 +123,16 @@
 
   // Abrir la pestaña por defecto al cargar la página
   document.getElementById("defaultOpen").click();
+</script>
+
+<script>
+  document.querySelectorAll('.sidenav > li > a[href="#general"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();                       // Evita saltar a #general
+      const sub = this.nextElementSibling;      // div.subnav-content
+      sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+    });
+  });
 </script>
 
 </body>

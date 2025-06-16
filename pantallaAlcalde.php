@@ -24,7 +24,7 @@
        $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
 
             if($Conexion){
-                echo "<h2>Conexión Exitosa!!!</h2>";
+                // echo "<h2>Conexión Exitosa!!!</h2>";
 
                 $Consulta = "select * from Alcalde where partido_id =1;";
                 $Resultado = $Conexion->query($Consulta);
@@ -59,13 +59,104 @@
 
     <div id="PNH" class="tabcontent">
       <h3>Partido Nacional de Honduras</h3>
+      <table>
+        <tr>
+       <th>Nombre</th>
+       <?php
+       include('Conexion.php')
+       $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
+
+            if($Conexion){
+                // echo "<h2>Conexión Exitosa!!!</h2>";
+
+                $Consulta = "select * from Alcalde where partido_id =2;";
+                $Resultado = $Conexion->query($Consulta);
+                
+                while($Fila = $Resultado->fetch_assoc()){
+                    $Cuenta = $Fila["Nombre"];
+                    echo "<td>".$Nombre."</td>";
+                }
+       ?>
+        </tr>
+        <tr>
+         <th>Municipio</th> 
+          <?php
+            include('Conexion.php')
+            $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
+
+                  if($Conexion){
+                      echo "<h2>Conexión Exitosa!!!</h2>";
+
+                      $Consulta = "select * from Municipio;";
+                      $Resultado = $Conexion->query($Consulta);
+                      
+                      while($Fila = $Resultado->fetch_assoc()){
+                          $Cuenta = $Fila["Municipio"];
+                          echo "<td>".$Municipio."</td>";
+                      }
+                  }
+            ?>
+        </tr>
     </div>
 
     <div id="PLR" class="tabcontent">
       <h3>Partido de Libertad y Refundación</h3>
+      <table>
+        <tr>
+       <th>Nombre</th>
+       <?php
+       include('Conexion.php')
+       $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
+
+            if($Conexion){
+                // echo "<h2>Conexión Exitosa!!!</h2>";
+
+                $Consulta = "select * from Alcalde where partido_id =3;";
+                $Resultado = $Conexion->query($Consulta);
+                
+                while($Fila = $Resultado->fetch_assoc()){
+                    $Cuenta = $Fila["Nombre"];
+                    echo "<td>".$Nombre."</td>";
+                }
+       ?>
+        </tr>
+        <tr>
+         <th>Municipio</th> 
+          <?php
+            include('Conexion.php')
+            $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
+
+                  if($Conexion){
+                      echo "<h2>Conexión Exitosa!!!</h2>";
+
+                      $Consulta = "select * from Municipio;";
+                      $Resultado = $Conexion->query($Consulta);
+                      
+                      while($Fila = $Resultado->fetch_assoc()){
+                          $Cuenta = $Fila["Municipio"];
+                          echo "<td>".$Municipio."</td>";
+                      }
+                  }
+            ?>
+        </tr>
     </div>
+    <div>
+          <input type="submit" id="btnVotar" value="Votar" onclick="window.location.href='pantallaDiputados.html'; " disabled>
+          <br>
+        </div>
   </div>
 </div>
+
+<script>
+   
+    const radios = document.querySelectorAll('input[type="radio"][name="presidente"]');
+    const btnVotar = document.getElementById('btnVotar');
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        btnVotar.disabled = false;
+      });
+    });
+  </script>
 
 </body>     
 </html>

@@ -12,6 +12,7 @@
     <table>
       <tr> 
         <th>Partido Liberal de Honduras</th>
+        
       </tr>
     </table>
 
@@ -26,6 +27,22 @@
         <th>Partido Libertad y Refundación</th>
       </tr>
     </table>
+
+    <div>
+          <input type="submit" id="btnVotar" value="Votar" onclick="window.location.href='pantallaDiputados.html'; " disabled>
+          <br>
+        </div>
+
+    <script>
+   
+    const radios = document.querySelectorAll('input[type="radio"][name="presidente"]');
+    const btnVotar = document.getElementById('btnVotar');
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        btnVotar.disabled = false;
+      });
+    });
+  </script>
 
 </body>     
 </html>

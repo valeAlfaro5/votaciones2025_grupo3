@@ -42,7 +42,7 @@
       <br>
     </div>
      <?php
-       include('Conexion.php')
+       include('Conexion.php');
        $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
 
         if($Conexion){

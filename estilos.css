@@ -5,12 +5,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
     margin: 0;
 }
 
 h1 {
     color: #e75480;
+    margin-top: 90px;
     margin-bottom: 16px;
 }
 

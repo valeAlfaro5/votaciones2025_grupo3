@@ -7,6 +7,7 @@
 <body>
   <div class="Alcalde_page">
     <h1 >Alcaldes</h1>
+    <p>Estos >son los candidatos de alcaldia de tu municipio en Choluteca.</p>
     <p>Selecciona un alcalde.</p>
 
     <div class="tablas">
@@ -24,7 +25,6 @@
        $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
 
             if($Conexion){
-                // echo "<h2>Conexión Exitosa!!!</h2>";
 
                 $Consulta = "select * from Alcalde where partido_id =1;";
                 $Resultado = $Conexion->query($Consulta);

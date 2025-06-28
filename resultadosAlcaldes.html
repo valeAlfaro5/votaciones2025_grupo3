@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,133 +8,138 @@
   <link rel="stylesheet" href="estilos.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
+
 <body>
 
-<ul class="sidenav">
-  <li><a href="resultadosPresidente.html">Presidentes</a></li>
-  <li><a href="resultadosAlcaldes.html">Alcaldes</a></li>
-  <li><a href="resultadosDiputados.html">Diputados</a></li>
-   <li>
-    <a href="#general">General ▾</a>
-    <div class="subnav-content">
-      //remplazar los # por las rutas de los algoritmos
-      //asegurarse que las otras paginas tengan el submenu
-      <a href="#avestruz">Algoritmo del Avestruz</a>
-      <a href="#banquero1">Algoritmo del Banquero para un solo  Recursos</a>
-      <a href="#banqueroM">Algoritmo del Banquero para Varios Recursos</a>
-      <a href="#filosofos">Problema de los Filosofos Comelones</a>
-      <a href="#lectores">Problema de Lectores Escritores</a>
-      <a href="#durmiente">Problema del Barbero Durmiente</a>
-    </div>
-  </li>
-  <li><a href="LoginAdmin.htm">Regresar a Inicio</a></li>
-</ul>
+  <ul class="sidenav">
+    <li><a href="resultadosPresidente.html">Presidentes</a></li>
+    <li><a href="resultadosAlcaldes.html">Alcaldes</a></li>
+    <li><a href="resultadosDiputados.html">Diputados</a></li>
+    <li>
+      <a href="#general">General ▾</a>
+      <div class="subnav-content">
 
-<div class="content">
-  <h1>Resultados de Elección de Alcaldes</h1>
-  <p>Gráfico comparativo de candidatos a la alcaldía.</p>
+        <a href="AlgoAvestruz.html">Algoritmo del Avestruz</a>
+        <a href="AlgoBanqueroSolo.html">Algoritmo del Banquero para un solo Recursos</a>
+        <a href="AlgoBanqueroVarios.html">Algoritmo del Banquero para Varios Recursos</a>
+        <a href="AlgoFilo.html">Problema de los Filosofos Comelones</a>
+        <a href="AlgoLectores.html">Problema de Lectores Escritores</a>
+        <a href="AlgoBarberos.html">Problema del Barbero Durmiente</a>
+      </div>
+    </li>
+    <li><a href="LoginAdmin.htm">Regresar a Inicio</a></li>
+  </ul>
 
-  <div class="tablas">
-    <button class="tablink" onclick="openPage('PLH', this, 'red')" id="defaultOpen">Partido Liberal de Honduras</button>
-    <button class="tablink" onclick="openPage('PNH', this, 'blue')">Partido Nacional de Honduras</button>
-    <button class="tablink" onclick="openPage('PLR', this, 'red')">Partido de Libertad y Refundación</button>
+  <div class="content">
+    <h1>Resultados de Elección de Alcaldes</h1>
+    <p>Gráfico comparativo de candidatos a la alcaldía.</p>
 
-    <div id="PLH" class="tabcontent">
-      <h3>Partido Liberal de Honduras</h3>
-      <canvas id="chartPLH" width="400px"height="350px" style="max-width: 900px; background-color: #FFE9EF;"></canvas>
-    </div>
+    <div class="tablas">
+      <button class="tablink" onclick="openPage('PLH', this, 'red')" id="defaultOpen">Partido Liberal de
+        Honduras</button>
+      <button class="tablink" onclick="openPage('PNH', this, 'blue')">Partido Nacional de Honduras</button>
+      <button class="tablink" onclick="openPage('PLR', this, 'red')">Partido de Libertad y Refundación</button>
 
-    <div id="PNH" class="tabcontent">
-      <h3>Partido Nacional de Honduras</h3>
-      <canvas id="chartPNH" width="400px" height="350px"style="max-width: 900px; background-color: #FFE9EF;"></canvas>
-    </div>
+      <div id="PLH" class="tabcontent">
+        <h3>Partido Liberal de Honduras</h3>
+        <canvas id="chartPLH" width="400px" height="350px"
+          style="max-width: 900px; background-color: #FFE9EF;"></canvas>
+      </div>
 
-    <div id="PLR" class="tabcontent">
-      <h3>Partido de Libertad y Refundación</h3>
-      <canvas id="chartPLR" width="400px" height="350px"style="max-width: 900px; background-color: #FFE9EF;"></canvas>
+      <div id="PNH" class="tabcontent">
+        <h3>Partido Nacional de Honduras</h3>
+        <canvas id="chartPNH" width="400px" height="350px"
+          style="max-width: 900px; background-color: #FFE9EF;"></canvas>
+      </div>
+
+      <div id="PLR" class="tabcontent">
+        <h3>Partido de Libertad y Refundación</h3>
+        <canvas id="chartPLR" width="400px" height="350px"
+          style="max-width: 900px; background-color: #FFE9EF;"></canvas>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-  // Para evitar cargar el mismo gráfico más de una vez
-  let chartsLoaded = {
-    PLH: false,
-    PNH: false,
-    PLR: false
-  };
+  <script>
+    // Para evitar cargar el mismo gráfico más de una vez
+    let chartsLoaded = {
+      PLH: false,
+      PNH: false,
+      PLR: false
+    };
 
-  function openPage(pageName, elmnt, color) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].style.backgroundColor = "";
-    }
-
-    document.getElementById(pageName).style.display = "block";
-    elmnt.style.backgroundColor = color;
-
-    if (!chartsLoaded[pageName]) {
-      loadChart(pageName);
-      chartsLoaded[pageName] = true;
-    }
-  }
-
-  function loadChart(partido) {
-    const ctx = document.getElementById('chart' + partido).getContext('2d');
-    const xValues = ["Salvador alcaldesa", "Nasry papi", "Rixi bebe"];
-    const yValues = [55, 49, 44];
-    const barColors = ["#FC809F", "#FC809F", "#FC809F"];
-
-    new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: xValues,
-        datasets: [{
-          backgroundColor: barColors,
-          data: yValues
-        }]
-      },
-      options: {
-        legend: { display: false },
-        title: {
-          display: true,
-          text: "Votos por Candidato",
-          fontSize: 22
-        },
-        scales: {
-          xAxes: [{
-            ticks: { fontSize: 16 }
-          }],
-          yAxes: [{
-            ticks: {
-              beginAtZero: true,
-              fontSize: 14
-            }
-          }]
-        }
+    function openPage(pageName, elmnt, color) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
       }
-    });
-  }
 
-  // Abrir la pestaña por defecto al cargar la página
-  document.getElementById("defaultOpen").click();
-</script>
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+      }
 
-<script>
-  document.querySelectorAll('.sidenav > li > a[href="#general"]').forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();                       // Evita saltar a #general
-      const sub = this.nextElementSibling;      // div.subnav-content
-      sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+      document.getElementById(pageName).style.display = "block";
+      elmnt.style.backgroundColor = color;
+
+      if (!chartsLoaded[pageName]) {
+        loadChart(pageName);
+        chartsLoaded[pageName] = true;
+      }
+    }
+
+    function loadChart(partido) {
+      const ctx = document.getElementById('chart' + partido).getContext('2d');
+      const xValues = ["Salvador alcaldesa", "Nasry papi", "Rixi bebe"];
+      const yValues = [55, 49, 44];
+      const barColors = ["#FC809F", "#FC809F", "#FC809F"];
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: xValues,
+          datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+          }]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: "Votos por Candidato",
+            fontSize: 22
+          },
+          scales: {
+            xAxes: [{
+              ticks: { fontSize: 16 }
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                fontSize: 14
+              }
+            }]
+          }
+        }
+      });
+    }
+
+    // Abrir la pestaña por defecto al cargar la página
+    document.getElementById("defaultOpen").click();
+  </script>
+
+  <script>
+    document.querySelectorAll('.sidenav > li > a[href="#general"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();                       // Evita saltar a #general
+        const sub = this.nextElementSibling;      // div.subnav-content
+        sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
+
 </html>

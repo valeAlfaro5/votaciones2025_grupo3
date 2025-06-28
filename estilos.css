@@ -1,188 +1,207 @@
 body {
-    background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
-    font-family: 'Times New Roman', Times, serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
+  background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
+  font-family: 'Times New Roman', Times, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
 }
 
 h1 {
-    color: #e75480;
-    margin-bottom: 16px;
+  color: #e75480;
+  margin-bottom: 16px;
 }
 
 
 p {
-    color: #c71585;
-    margin-bottom: 24px;
+  color: #c71585;
+  margin-bottom: 24px;
 }
 
 form {
-    background: #fff0f6;
-    padding: 32px 24px;
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(255, 105, 180, 0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background: #fff0f6;
+  padding: 32px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(255, 105, 180, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input[type="text"],
 input[type="password"] {
-    width: 220px;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ffb6c1;
-    border-radius: 8px;
-    outline: none;
-    font-size: 16px;
+  width: 220px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ffb6c1;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
 }
 
 input[type="submit"] {
-    background: #ff69b4;
-    color: white;
-    border: none;
-    padding: 12px 0;
-    width: 100%;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 12px;
-    transition: background 0.2s;
+  background: #ff69b4;
+  color: white;
+  border: none;
+  padding: 12px 0;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background 0.2s;
 }
+
 input[type="submit"]:disabled {
-    background: #e75480;
-    color: #d7d7d7;
-   
+  background: #e75480;
+  color: #d7d7d7;
+
 }
 
 input[type="submit"]:hover {
-    background: #e75480;
+  background: #e75480;
 }
 
 .admin-btn {
-    margin-top: 10px;
-    background: #fff;
-    color: #e75480;
-    border: 1px solid #e75480;
-    border-radius: 6px;
-    padding: 5px 14px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+  margin-top: 10px;
+  background: #fff;
+  color: #e75480;
+  border: 1px solid #e75480;
+  border-radius: 6px;
+  padding: 5px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
+
 .admin-btn:hover {
-    background: #e75480;
-    color: #fff;
+  background: #e75480;
+  color: #fff;
 }
+
 .volver-btn {
-    margin-top: 10px;
-    background: #fff;
-    color: #e75480;
-    border: 1px solid #e75480;
-    border-radius: 6px;
-    padding: 5px 14px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+  margin-top: 10px;
+  background: #fff;
+  color: #e75480;
+  border: 1px solid #e75480;
+  border-radius: 6px;
+  padding: 5px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
+
 .volver-btn:hover {
-    background: #e75480;
-    color: #fff;
+  background: #e75480;
+  color: #fff;
 }
 
 
 .presi_page table {
-      width: 1300px;
-      margin: auto;
-      border-collapse: collapse;
-      background-color: #fadad9;
-      border-radius: 20px;
-      text-align: center;
-    }
-    .presi_page th, .presi_page td {
-      width: 200px;
-      padding: 10px;
-      border: 5px solid #ff809f;
-      text-align: center;
-      vertical-align: middle;
-    }
-    .presi_page img {
-      display: block;
-      margin: auto;
-    }
-.presi_page h1{
-    text-align: center;
-    color: #e75480;
-    margin-bottom: 20px;
+  width: 1300px;
+  margin: auto;
+  border-collapse: collapse;
+  background-color: #fadad9;
+  border-radius: 20px;
+  text-align: center;
 }
+
+.presi_page th,
+.presi_page td {
+  width: 200px;
+  padding: 10px;
+  border: 5px solid #ff809f;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.presi_page img {
+  display: block;
+  margin: auto;
+}
+
+.presi_page h1 {
+  text-align: center;
+  color: #e75480;
+  margin-bottom: 20px;
+}
+
 .presi_page p {
-    text-align: center;
-    color: #c71585;
-    margin-bottom: 20px;
+  text-align: center;
+  color: #c71585;
+  margin-bottom: 20px;
 }
 
 .diputados_page table {
-      width: 1300px;
-      margin: auto;
-      border-collapse: collapse;
-      background-color: #fadad9;
-      border-radius: 20px;
-      text-align: center;
-    }
-    .diputados_page th, .diputados_page td {
-      width: 200px;
-      padding: 10px;
-      border: 5px solid #ff809f;
-      text-align: center;
-      vertical-align: middle;
-    }
-    .diputados_page img {
-      display: block;
-      margin: auto;
-    }
-.diputados_page h1{
-    text-align: center;
-    color: #e75480;
-    margin-bottom: 20px;
+  width: 1300px;
+  margin: auto;
+  border-collapse: collapse;
+  background-color: #fadad9;
+  border-radius: 20px;
+  text-align: center;
 }
+
+.diputados_page th,
+.diputados_page td {
+  width: 200px;
+  padding: 10px;
+  border: 5px solid #ff809f;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.diputados_page img {
+  display: block;
+  margin: auto;
+}
+
+.diputados_page h1 {
+  text-align: center;
+  color: #e75480;
+  margin-bottom: 20px;
+}
+
 .diputados_page p {
-    text-align: center;
-    color: #c71585;
-    margin-bottom: 20px;
+  text-align: center;
+  color: #c71585;
+  margin-bottom: 20px;
 }
 
 .Alcalde_page table {
-      width: 1300px;
-      margin: auto;
-      border-collapse: collapse;
-      background-color: #fadad9;
-      border-radius: 20px;
-      text-align: center;
-    }
-    .Alcalde_page th, .Alcalde_page td {
-      width: 200px;
-      padding: 10px;
-      border: 5px solid #ff809f;
-      text-align: center;
-      vertical-align: middle;
-    }
-    .Alcalde_page img {
-      display: block;
-      margin: auto;
-    }
-.Alcalde_page h1{
-    text-align: center;
-    color: #e75480;
-    margin-bottom: 20px;
+  width: 1300px;
+  margin: auto;
+  border-collapse: collapse;
+  background-color: #fadad9;
+  border-radius: 20px;
+  text-align: center;
 }
+
+.Alcalde_page th,
+.Alcalde_page td {
+  width: 200px;
+  padding: 10px;
+  border: 5px solid #ff809f;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.Alcalde_page img {
+  display: block;
+  margin: auto;
+}
+
+.Alcalde_page h1 {
+  text-align: center;
+  color: #e75480;
+  margin-bottom: 20px;
+}
+
 .Alcalde_page p {
-    text-align: center;
-    color: #c71585;
-    margin-bottom: 20px;
+  text-align: center;
+  color: #c71585;
+  margin-bottom: 20px;
 }
 
 /* Sidebar */
@@ -220,7 +239,8 @@ input[type="submit"]:hover {
 
 /* Contenido principal */
 .content {
-  margin-left: 100px; /* espacio para el sidebar */
+  margin-left: 100px;
+  /* espacio para el sidebar */
   padding: 20px;
   flex: 1;
   color: #c71585;
@@ -299,4 +319,28 @@ tablas.tabcontent {
   float: left;
   color: white;
   text-decoration: none;
+}
+
+/*Compiler box container*/
+#compiler-container {
+  background: #fff0f6;
+  padding: 32px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(255, 105, 180, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.algo-desc {
+
+  max-width: 900px;
+  color: #c71585;
+}
+
+.varios_banqueros ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 20px;
+  list-style-position: inside;
 }

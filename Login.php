@@ -82,6 +82,8 @@
 
     // Todo válido
     errorDiv.textContent = "";
+    session_start();
+    $_SESSION['municipio'] = $_POST['municipio'];
     return true;
    }
   </script>

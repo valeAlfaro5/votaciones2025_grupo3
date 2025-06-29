@@ -19,11 +19,13 @@
            <td rowspan="2"><img src="./imagenes/plh.jpg" alt="Salvador Nasralla" height = "100"width="100"></td>
        <?php
        include('Conexion.php');
+       session_start();
+      $municipio_usuario = isset($_SESSION['municipio']) ? $_SESSION['municipio'] : '';
        $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
 
             if($Conexion){
 
-                $Consulta = "select * from Alcalde where partido_id =1;";
+                $Consulta = "select * from Alcalde where partido_id =1 and Municipio = '$municipio_usuario';";
                 $Resultado = $Conexion->query($Consulta);
                 while ($Fila = $Resultado->fetch_assoc()) {
                   $nombre = $Fila["Nombre"];
@@ -41,25 +43,7 @@
             } 
        ?>
         </tr>
-        <tr>
-         <th>Municipio</th> 
-          <?php
-            include('Conexion.php');
-            $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
 
-                  if($Conexion){
-                      echo "<h2>Conexión Exitosa!!!</h2>";
-
-                      $Consulta = "select * from Municipio;";
-                      $Resultado = $Conexion->query($Consulta);
-                      
-                      while($Fila = $Resultado->fetch_assoc()){
-                          $Cuenta = $Fila["Municipio"];
-                          echo "<td>".$Municipio."</td>";
-                      }
-                  }
-            ?>
-        </tr>
       </table>
     </div>
 
@@ -70,12 +54,14 @@
            <td rowspan="2"><img src="./imagenes/pnh.png"  height = "100"width="100"></td>
        <?php
        include('Conexion.php');
+        session_start();
+      $municipio_usuario = isset($_SESSION['municipio']) ? $_SESSION['municipio'] : '';
        $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
 
             if($Conexion){
                 // echo "<h2>Conexión Exitosa!!!</h2>";
 
-                $Consulta = "select * from Alcalde where partido_id =2;";
+                $Consulta = "select * from Alcalde where partido_id =2  and Municipio = '$municipio_usuario';";
                 $Resultado = $Conexion->query($Consulta);
                 
                 while ($Fila = $Resultado->fetch_assoc()) {
@@ -95,25 +81,7 @@
             
        ?>
         </tr>
-        <tr>
-         <th>Municipio</th> 
-          <?php
-            include('Conexion.php');
-            $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
-
-                  if($Conexion){
-                      echo "<h2>Conexión Exitosa!!!</h2>";
-
-                      $Consulta = "select * from Municipio;";
-                      $Resultado = $Conexion->query($Consulta);
-                      
-                      while($Fila = $Resultado->fetch_assoc()){
-                          $Cuenta = $Fila["Municipio"];
-                          echo "<td>".$Municipio."</td>";
-                      }
-                  }
-            ?>
-        </tr>
+      </table>
     </div>
 
     <div id="PLR" class="tabcontent">
@@ -123,12 +91,14 @@
         <td rowspan="2"><img src="./imagenes/libre.png" height = "100"width="100"></td>
        <?php
        include('Conexion.php');
+        session_start();
+      $municipio_usuario = isset($_SESSION['municipio']) ? $_SESSION['municipio'] : '';
        $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
 
             if($Conexion){
                 // echo "<h2>Conexión Exitosa!!!</h2>";
 
-                $Consulta = "select * from Alcalde where partido_id =3;";
+                $Consulta = "select * from Alcalde where partido_id =3 and Municipio = '$municipio_usuario';";
                 $Resultado = $Conexion->query($Consulta);
                 
                 while ($Fila = $Resultado->fetch_assoc()) {
@@ -147,25 +117,7 @@
             } 
        ?>
         </tr>
-        <tr>
-         <th>Municipio</th> 
-          <?php
-            include('Conexion.php');
-            $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
-
-                  if($Conexion){
-                      echo "<h2>Conexión Exitosa!!!</h2>";
-
-                      $Consulta = "select * from Municipio;";
-                      $Resultado = $Conexion->query($Consulta);
-                      
-                      while($Fila = $Resultado->fetch_assoc()){
-                          $Cuenta = $Fila["Municipio"];
-                          echo "<td>".$Municipio."</td>";
-                      }
-                  }
-            ?>
-        </tr>
+      </table>
     </div>
     <div>
           <input type="submit" id="btnVotar" value="Votar" onclick="window.location.href='pantallaDiputados.html'; " disabled>

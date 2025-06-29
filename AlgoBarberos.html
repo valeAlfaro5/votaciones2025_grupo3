@@ -31,12 +31,49 @@
     <div class="content">
         <h1>Algoritmo del Problema del Barbero Durmiente</h1>
         <p class="algo-desc">
-            datos
+            Este problema es un ejemplo importante para entender la coordinación de procesos, la gestión de colas de
+            espera y el uso eficiente de los recursos en sistemas concurrentes, así como el uso de los semáforos como
+            herramienta para la coordinación de hilos.
+        </p>
+        <h2>¿Cómo funciona?</h2>
+        <p class="algo-desc">
+            Este es un problema clásico de la teoría de la computación que surge para agilizar la sincronización dentro
+            de los sistemas operativos. El problema del barbero durmiente nos ayuda a visualizar la gestión de procesos
+            y los recursos compartidos.
         </p>
 
-        <h2>titulo</h2>
+        <p class="algo-desc">
+            El problema como tal es descrito dentro de una barbería donde existe un barbero, donde él representa los
+            recursos del sistema. De allí tenemos la silla de trabajo que sería nuestra área de procesamiento. Las
+            sillas de espera además representan una similitud con una cola de prioridad donde el primero en llegar es
+            atendido, simulando el proceso first in first out (FIFO). Estas además tienen un límite para realmente
+            capturar la limitante de los recursos en el sistema. Además se nos describe que al momento de no haber
+            clientes el barbero es libre de descansar y entre de nuevo en acción tras llegar más clientes.
+        </p>
+        <p class="algo-desc">
+            Este problema es un ejemplo importante para entender la coordinación de procesos, la gestión de colas de
+            espera y el uso eficiente de los recursos en sistemas concurrentes, así como el uso de los semáforos como
+            herramienta para la coordinación de hilos.
+        </p>
+
         <div id="compiler-container">
+            <iframe frameBorder="0" height="450px" src="https://onecompiler.com/embed/cpp/43p6k6har"
+                width="100%"></iframe>
         </div>
+        <p class="algo-desc">
+            El ejemplo que se presenta representa una barbería no equitativa ya que no trabaja en base al tiempo en el
+            que se termina el proceso si no que lo trata por orden de llegada en una cola FIFO.
+        </p>
+        <hr style="border: none; border-top: 2px solid #e75480; margin: 20px 0;">
+        <footer>
+            <h2 class="algo-desc">Referencias:</h2>
+            <ul style="max-width: 800px; line-height: 1.5;">
+                <li>BitCuco. (2020). El Barbero Durmiente: Clásicos de la Programación. BitCuco. Retrieved 2025, from
+                    https://bitcu.co/barbero-durmiente/ </li>
+                <li>Elvira, J. L. (Director). (2020). Sistemas Operativos, Problema de la concurrencia 19 Semáforos
+                    barbería no equitativa. https://www.youtube.com/watch?v=KBD9y-e3PYM </li>
+            </ul>
+        </footer>
     </div>
 
     <script>

@@ -11,9 +11,6 @@
     <p>Selecciona un alcalde.</p>
 
     <div class="tablas">
-    <button class="tablink" onclick="openPage('PLH', this, 'red')" id="defaultOpen">Partido Liberal de Honduras</button>
-    <button class="tablink" onclick="openPage('PNH', this, 'blue')">Partido Nacional de Honduras</button>
-    <button class="tablink" onclick="openPage('PLR', this, 'red')">Partido de Libertad y Refundación</button>
 
     <div id="PLH" class="tabcontent">
       <table>

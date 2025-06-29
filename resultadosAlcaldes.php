@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="estilos.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
+
 <body>
 
 <ul class="sidenav">
@@ -16,25 +18,20 @@
    <li>
     <a href="#general">General ▾</a>
     <div class="subnav-content">
-      <a href="#avestruz">Algoritmo del Avestruz</a>
-      <a href="#banquero1">Algoritmo del Banquero para un solo  Recursos</a>
-      <a href="#banqueroM">Algoritmo del Banquero para Varios Recursos</a>
-      <a href="#filosofos">Problema de los Filosofos Comelones</a>
-      <a href="#lectores">Problema de Lectores Escritores</a>
-      <a href="#durmiente">Problema del Barbero Durmiente</a>
-    </div>
-  </li>
-  <li><a href="LoginAdmin.html">Regresar a Inicio</a></li>
-</ul>
+        <a href="AlgoAvestruz.html">Algoritmo del Avestruz</a>
+        <a href="AlgoBanqueroSolo.html">Algoritmo del Banquero para un solo Recursos</a>
+        <a href="AlgoBanqueroVarios.html">Algoritmo del Banquero para Varios Recursos</a>
+        <a href="AlgoFilo.html">Problema de los Filosofos Comelones</a>
+        <a href="AlgoLectores.html">Problema de Lectores Escritores</a>
+        <a href="AlgoBarberos.html">Problema del Barbero Durmiente</a>
+      </div>
+    </li>
+    <li><a href="LoginAdmin.htm">Regresar a Inicio</a></li>
+  </ul>
 
-<div class="content">
-  <h1>Resultados de Elección de Alcaldes</h1>
-  <p>Gráfico comparativo de candidatos a la alcaldía.</p>
-
-  <div class="tablas">
-    <button class="tablink" onclick="openPage('PLH', this, 'red')" id="defaultOpen">Partido Liberal de Honduras</button>
-    <button class="tablink" onclick="openPage('PNH', this, 'blue')">Partido Nacional de Honduras</button>
-    <button class="tablink" onclick="openPage('PLR', this, 'red')">Partido de Libertad y Refundación</button>
+  <div class="content">
+    <h1>Resultados de Elección de Alcaldes</h1>
+    <p>Gráfico comparativo de candidatos a la alcaldía.</p>
 
     <div id="PLH"  class="tabcontent">
       <h3>Partido Liberal de Honduras</h3>
@@ -51,7 +48,6 @@
       <canvas id="chartPLR"  value ='3' width="400px" height="350px"style="max-width: 900px; background-color: #FFE9EF;"></canvas>
     </div>
   </div>
-</div>
 
 <?php
     include('Conexion.php');
@@ -152,12 +148,12 @@
           }]
         }
       }
-    });
-  }
 
-  // Abrir la pestaña por defecto al cargar la página
-  document.getElementById("defaultOpen").click();
-</script>
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+      }
 
 </body>
+
 </html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algoritmo del Avestruz</title>
+    <link rel="stylesheet" href="estilos.css" />
+</head>
+
+<body>
+
+    <ul class="sidenav">
+        <li><a href="resultadosPresidente.html">Presidentes</a></li>
+        <li><a href="resultadosAlcaldes.html">Alcaldes</a></li>
+        <li><a href="resultadosDiputados.html">Diputados</a></li>
+        <li>
+            <a href="#general">General ▾</a>
+            <div class="subnav-content">
+                <a href="AlgoAvestruz.html">Algoritmo del Avestruz</a>
+                <a href="AlgoBanqueroSolo.html">Algoritmo del Banquero para un solo Recursos</a>
+                <a href="AlgoBanqueroVarios.html">Algoritmo del Banquero para Varios Recursos</a>
+                <a href="AlgoFilo.html">Problema de los Filosofos Comelones</a>
+                <a href="AlgoLectores.html">Problema de Lectores Escritores</a>
+                <a href="AlgoBarberos.html">Problema del Barbero Durmiente</a>
+            </div>
+        </li>
+        <li><a href="LoginAdmin.html">Regresar a Inicio</a></li>
+    </ul>
+
+    <div class="content">
+        <h1>Algoritmo del Avestruz</h1>
+        <p class="algo-desc">
+            El algoritmo del Avestruz es una estrategia de resolución para problemas de interbloqueo en los sistemas
+            operativos. Consiste en ignorar el interbloqueo, fingir que no existe. Este método es el más simple de
+            implementar ante el problema de interbloqueos, ya que solamente no se actúa en contra del problema. Esta
+            solución se aplica cuando el interbloqueo no representa un problema significativo para el funcionamiento del
+            sistema.
+        </p>
+
+        <h2>Condiciones Optimas</h2>
+        <p class="algo-desc">
+            Esta solución se vuelve la más óptima bajo las siguientes condiciones (Gonzáles Nalda, 2024):
+        </p>
+        <ul>
+            <li>Sucede con poca frecuencia.</li>
+            <li>Si ocurre no hay consecuencias graves.</li>
+            <li>El costo de solucionar el interbloqueo es alto en recursos.</li>
+        </ul>
+        <p class="algo-desc">
+            En otros casos sin embargo causa un impacto con mayores desventajas para el sistema operativo.
+        </p>
+
+        <div id="compiler-container">
+            <iframe frameBorder="0" height="450px" src="https://onecompiler.com/embed/cpp/43p4rcqmt"
+                width="100%"></iframe>
+        </div>
+        <h2>Ventajas</h2>
+        <p class="algo-desc"> Las ventajas de este algoritmo incluyen:</p>
+        <ul>
+            <li>El algoritmo es simple en implementación y diseño.</li>
+            <li>Evita el uso de recursos extra del sistema operativo en métodos de detección y prevención.</li>
+            <li>En sistemas con poca posibilidad de interbloques graves es el método más óptimo.</li>
+        </ul>
+
+        <h2>Desventajas</h2>
+        <p class="algo-desc"> Las desventajas de este algoritmo incluyen:</p>
+        <ul>
+            <li>Tiene repercusiones impredecibles acerca de los interbloqueos no resueltos. </li>
+            <li>Posibilidad de fallos del sistema operativo completo. </li>
+            <li>Puede llevar a la inanición de procesos dentro del sistema operativo. </li>
+        </ul>
+        <hr style="border: none; border-top: 2px solid #e75480; margin: 20px 0;">
+        <footer>
+            <h2 class="algo-desc">Referencias:</h2>
+            <ul style="max-width: 800px; line-height: 1.5;">
+                <li>GeeksforGeeks. (2023). Deadlock Ignorance in Operating System. GeeksforGeeks. Retrieved 2025, from
+                    https://www.geeksforgeeks.org/operating-systems/deadlock-ignorance-in-operating-system/ </li>
+                <li>Gonzáles Nalda, P. (2024). 8 Concurrencia de Procesos. Universidad del Pais Vasco. Retrieved 2025,
+                    from
+                    https://lsi.vc.ehu.eus/pablogn/docencia/ISO/8%20Concurrencia%20y%20Comunicac/ISO8.pdf </li>
+                <li>Tanenbaum, A. S. (2008). Sistemas operativos modernos (3rd ed.). Pearson Education.</li>
+            </ul>
+        </footer>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('.sidenav > li > a[href="#general"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();                       // Evita saltar a #general
+                const sub = this.nextElementSibling;      // div.subnav-content
+                sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+
+</html>

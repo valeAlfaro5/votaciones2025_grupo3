@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banquero para Varios Recursos</title>
+    <link rel="stylesheet" href="estilos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+
+<body>
+
+    <ul class="sidenav">
+        <li><a href="resultadosPresidente.html">Presidentes</a></li>
+        <li><a href="resultadosAlcaldes.html">Alcaldes</a></li>
+        <li><a href="resultadosDiputados.html">Diputados</a></li>
+        <li>
+            <a href="#general">General ▾</a>
+            <div class="subnav-content">
+                <a href="AlgoAvestruz.html">Algoritmo del Avestruz</a>
+                <a href="AlgoBanqueroSolo.html">Algoritmo del Banquero para un solo Recursos</a>
+                <a href="AlgoBanqueroVarios.html">Algoritmo del Banquero para Varios Recursos</a>
+                <a href="AlgoFilo.html">Problema de los Filosofos Comelones</a>
+                <a href="AlgoLectores.html">Problema de Lectores Escritores</a>
+                <a href="AlgoBarberos.html">Problema del Barbero Durmiente</a>
+            </div>
+        </li>
+        <li><a href="LoginAdmin.html">Regresar a Inicio</a></li>
+    </ul>
+
+    <div class="content">
+        <h1>Algoritmo del Banquero para Varios Recursos</h1>
+        <p class="algo-desc">
+            Este algoritmo surge de la generalización del banquero de un solo recurso para que este pueda manejar varios
+            recursos. Mantenemos el planteo del problema original, el banquero es nuestro sistema operativo y los
+            procesos los clientes, solamente que ahora los clientes tienen varias cuentas de crédito.
+        </p>
+        <h2>¿Cómo funciona?</h2>
+        <p class="algo-desc">
+            Ahora la manera en la que podemos visualizarlo mejor es mediante matrices. Donde tendríamos dos matrices,
+            una que maneja los recursos ya asignados al momento y la otra los que aún necesita. Ambas matrices las
+            acompaña un solo vector llevando cuenta de las unidades, o recursos aún disponibles para los procesos.
+        </p>
+        <div id="compiler-container">
+            <img src="./imagenes/EjemplosAlgoritmos/EjemploBanqueroVarios.png"
+                alt="Ejemplo del Banquero Para Varios Recursos" height="350" />
+        </div>
+        <p class="algo-desc">
+            Para proceder cuidando que el estado sigue siendo seguro podemos seguir los siguientes pasos generales
+            (Tanenbaum, 2008):
+        </p>
+        <ol style="max-width: 800px;">
+            <li>Se busca a una fila a la que podamos completar su necesidad de recursos, con los que tenemos
+                disponibles. Si no se encuentra una fila así el sistema ya esta en un interbloqueo.</li>
+            <li>Si elegimos un proceso asumimos que al otorgarle los recursos este termina y estos se vuelven una vez
+                más disponibles.</li>
+            <li> Repetimos los pasos hasta que todos los procesos terminen o se llegue a un interbloqueo.</li>
+        </ol>
+
+        <div id="compiler-container">
+            <iframe frameBorder="0" height="450px" src="https://onecompiler.com/embed/cpp/43p684tyq"
+                width="100%"></iframe>
+        </div>
+        <hr style="border: none; border-top: 2px solid #e75480; margin: 20px 0;">
+        <footer>
+            <h2 class="algo-desc">Referencias:</h2>
+            <ul style="max-width: 800px; line-height: 1.5;">
+                <li>GeeksforGeeks. (2025). Banker's Algorithm in Operating System. GeeksforGeeks. Retrieved 2025, from
+                    https://www.geeksforgeeks.org/operating-systems/bankers-algorithm-in-operating-system-2/ </li>
+                <li>Tanenbaum, A. S. (2008). Sistemas operativos modernos (3rd ed.). Pearson Education.</li>
+            </ul>
+        </footer>
+    </div>
+    <script>
+        document.querySelectorAll('.sidenav > li > a[href="#general"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();                       // Evita saltar a #general
+                const sub = this.nextElementSibling;      // div.subnav-content
+                sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+
+</body>
+
+</html>

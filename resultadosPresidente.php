@@ -11,9 +11,9 @@
 
 <body>
   <ul class="sidenav">
-    <li><a href="resultadosPresidente.html">Presidentes</a></li>
-    <li><a href="resultadosAlcaldes.html">Alcaldes</a></li>
-    <li><a href="resultadosDiputados.html">Diputados</a></li>
+    <li><a href="resultadosPresidente.php">Presidentes</a></li>
+  <li><a href="resultadosAlcaldes.php">Alcaldes</a></li>
+  <li><a href="resultadosDiputados.php">Diputados</a></li>
     <li>
       <a href="#general">General ▾</a>
       <div class="subnav-content">
@@ -34,10 +34,31 @@
     <canvas id="myChart" width="600px" height="500px" style="max-width: 1500px; background-color: #FFE9EF;"></canvas>
   </div>
 
-  <script>
-    var xValues = ["Salvador Nasralla", "Nasry Asfura", "Rixi Moncada"];
-    var yValues = [55, 49, 44];
-    var barColors = ["#FC809F", "#FC809F", "#FC809F"];
+ <?php
+    include('Conexion.php');
+    $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
+    $votos = [];
+
+    if ($Conexion) {
+      $Consulta = "SELECT votos FROM Presidente";
+      $Resultado = $Conexion->query($Consulta);
+      
+      if ($Resultado && $Resultado->num_rows > 0) {
+        while ($fila = $Resultado->fetch_assoc()) {
+          $votos[] = (int)$fila["votos"];
+        }
+        // echo "<p>Termino<p>";
+      }
+    }else{
+      echo "Error de Conexion";
+    }
+
+  ?>
+
+<script>
+  var xValues = ["Salvador Nasralla", "Nasry Asfura", "Rixi Moncada"];
+  var yValues = <?php echo json_encode($votos)?>;
+  var barColors = ["#FC809F", "#FC809F", "#FC809F"];
 
     new Chart("myChart", {
       type: "bar",

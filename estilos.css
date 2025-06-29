@@ -1,11 +1,11 @@
 body {
   background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  height: 100%;
   margin: 0;
 }
 
@@ -20,7 +20,7 @@ p {
   margin-bottom: 24px;
 }
 
-form {
+form.form-login {
   background: #fff0f6;
   padding: 32px 24px;
   border-radius: 16px;
@@ -29,6 +29,7 @@ form {
   flex-direction: column;
   align-items: center;
 }
+
 
 input[type="text"],
 input[type="password"] {
@@ -303,22 +304,6 @@ tablas.tabcontent {
   display: none;
   padding: 100px 20px;
   height: 100%;
-}
-
-.subnav-content {
-  display: none;
-  position: absolute;
-  left: 0;
-  background-color: white;
-  width: 100%;
-  z-index: 1;
-}
-
-/* Style the subnav links */
-.subnav-content a {
-  float: left;
-  color: white;
-  text-decoration: none;
 }
 
 /*Compiler box container*/

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,14 +23,19 @@
         <a href="AlgoFilo.html">Problema de los Filosofos Comelones</a>
         <a href="AlgoLectores.html">Problema de Lectores Escritores</a>
         <a href="AlgoBarberos.html">Problema del Barbero Durmiente</a>
-      </div>
-    </li>
-    <li><a href="LoginAdmin.htm">Regresar a Inicio</a></li>
-  </ul>
+    </div>
+  </li>
+  <li><a href="LoginAdmin.php">Regresar a Inicio</a></li>
+</ul>
 
-  <div class="content">
-    <h1>Resultados de Elección de Alcaldes</h1>
-    <p>Gráfico comparativo de candidatos a la alcaldía.</p>
+<div class="content">
+  <h1>Resultados de Elección de Alcaldes</h1>
+  <p>Gráfico comparativo de candidatos a la alcaldía.</p>
+
+  <div class="tablas">
+    <button class="tablink" onclick="openPage('PLH', this, 'red')" id="defaultOpen">Partido Liberal de Honduras</button>
+    <button class="tablink" onclick="openPage('PNH', this, 'blue')">Partido Nacional de Honduras</button>
+    <button class="tablink" onclick="openPage('PLR', this, 'red')">Partido de Libertad y Refundación</button>
 
     <div id="PLH"  class="tabcontent">
       <h3>Partido Liberal de Honduras</h3>
@@ -48,6 +52,7 @@
       <canvas id="chartPLR"  value ='3' width="400px" height="350px"style="max-width: 900px; background-color: #FFE9EF;"></canvas>
     </div>
   </div>
+</div>
 
 <?php
     include('Conexion.php');
@@ -148,12 +153,12 @@
           }]
         }
       }
+    });
+  }
 
-      tablinks = document.getElementsByClassName("tablink");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].style.backgroundColor = "";
-      }
+  // Abrir la pestaña por defecto al cargar la página
+  document.getElementById("defaultOpen").click();
+</script>
 
 </body>
-
 </html>

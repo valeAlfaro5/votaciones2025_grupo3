@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8" />
     <title>Login - Votaciones 2025</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
@@ -14,33 +15,43 @@
     <input type="text" name = "municipio" placeholder="Municipio" required><br>
     <input type="submit" value="Entrar" >
     <br>
-    <button type="button" class="admin-btn" onclick="window.location.href='LoginAdmin.html'">Iniciar sesión como admin</button>
+    <button type="button" class="admin-btn" onclick="window.location.href='LoginAdmin.php'">Iniciar sesión como admin</button><br><br>
 </form>
 
 <?php
     include('Conexion.php');
+    session_start(); 
+
     $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
-    
-    if($Conexion){
+    if($Conexion && $_SERVER['REQUEST_METHOD'] === 'POST'){
         $municipio = $_POST['municipio'];
         $identidad =$_POST['identidad'];
         $usuario = $_POST['usuario'];
+        $pass= "";
+        
+        $ConMun = "SELECT municipio_id FROM Municipio WHERE nombre = '$municipio'";
+        $Resultado1 = $Conexion->query($ConMun);
+        
+        if($Resultado1){
+          $fila = $Resultado1->fetch_assoc();
+          $_SESSION['municipio_id'] = $fila['municipio_id'];
 
-        if(isset($_POST['municipio']) && isset($_POST['usuario'])){
-            $ConMun = "SELECT * FROM Municipio WHERE nombre = $municipio";
-            $Resultado1->query($ConMun);
-            
-            if($Resultado1){
-                $ConUser = "INSERT INTO Usuario (usuario, password, identidad) VALUES ('$usuario', '', '$identidad')";
-                $Resultado2->query($ConUser);
-                if($Resultado2){
-                    echo "Login Exitoso!";
-                }
-            }
+          //validar que no este en la bd
+          $Validar = "SELECT * FROM Usuario WHERE identidad = '$identidad'";
+          $Resultado3 = $Conexion->query($Validar);
+
+          if($Resultado3){//si esta se redirige a la pagina
+            echo "<script>setTimeout(() => window.location.href = 'pantallaPresidente.php', 2000);</script>";
+          }else{
+            //si no esta se ingresan sus datos 
+           $ConUser = "INSERT INTO Usuario (usuario, pass, identidad) VALUES ('$usuario', '$pass', '$identidad')";
+            $Resultado2 = $Conexion->query($ConUser);
+            if($Resultado2){
+                echo "<p>Login Exitoso!</p>";
+                echo "<script>setTimeout(() => window.location.href = 'pantallaPresidente.php', 2000);</script>";
+            }}
         }
         
-    }else{
-        echo "Error de conexion!!";
     }
 ?>
 
@@ -82,8 +93,6 @@
 
     // Todo válido
     errorDiv.textContent = "";
-    session_start();
-    $_SESSION['municipio'] = $_POST['municipio'];
     return true;
    }
   </script>

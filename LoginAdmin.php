@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+      <meta charset="UTF-8" />
     <title>Login Admin - Votaciones 2025</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
@@ -20,20 +21,20 @@
     include('Conexion.php');
     $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
 
-    if($Conexion){
+    if ($Conexion && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $usuario = mysqli_real_escape_string($Conexion, $_POST['usuario']);
         $pass = mysqli_real_escape_string($Conexion, $_POST['pass']);
 
-        $Consulta = "SELECT * FROM Usuario WHERE usuario = $usuario && password = $pass";
-        $Resultado->query($Consulta);
+        $Consulta = "SELECT * FROM Usuario WHERE usuario = '$usuario' AND pass = '$pass'";
+        $Resultado = $Conexion->query($Consulta);
 
-        if($Resultado){
-             echo "<script>setTimeout(() => window.location.href = 'resultadosPresidente.php', 2000);</script>";
-        }else{
-            echo "usuario o contra no encontrados";
+        if ($Resultado) {
+            echo "<script>setTimeout(() => window.location.href = 'resultadosPresidente.php', 1000);</script>";
+        } else {
+            echo "<p style='color:red;'>Usuario o contraseña incorrectos.</p>";
         }
     }
-
 ?>
+
 </body>
 </html>

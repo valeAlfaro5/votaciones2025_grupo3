@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8" />
   <title>Elección de Presidente</title>
   <link rel="stylesheet" href="estilos.css">
 </head>
@@ -54,7 +55,7 @@
 
           if ($Resultado) {
             echo "<p>¡Voto registrado con éxito!</p>";
-            echo "<script>setTimeout(() => window.location.href = 'pantallaDiputados.html', 2000);</script>";
+            echo "<script>setTimeout(() => window.location.href = 'pantallaDiputados.php', 2000);</script>";
           } else {
             echo "<p>Error al registrar el voto</p>";
           }
@@ -63,7 +64,6 @@
         echo "<p>Error al conectar con la base de datos.</p>";
       }
     ?>
-  </div>
 
   <script>
     const radios = document.querySelectorAll('input[type="radio"][name="presidente"]');

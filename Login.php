@@ -31,7 +31,7 @@
             $Resultado1->query($ConMun);
             
             if($Resultado1){
-                $ConUser = "INSERT INTO Usuario (usuario_id, usuario, password, identidad) VALUES (, $usuario,"", $identidad)";
+                $ConUser = "INSERT INTO Usuario (usuario, password, identidad) VALUES ('$usuario', '', '$identidad')";
                 $Resultado2->query($ConUser);
                 if($Resultado2){
                     echo "Login Exitoso!";

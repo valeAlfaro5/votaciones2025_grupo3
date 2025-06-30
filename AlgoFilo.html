@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Problema de los Filosofos Comelones</title>
+    <link rel="stylesheet" href="estilos.css" />
+</head>
+
+<body>
+
+    <ul class="sidenav">
+        <li><a href="resultadosPresidente.php">Presidentes</a></li>
+        <li><a href="resultadosAlcaldes.php">Alcaldes</a></li>
+        <li><a href="resultadosDiputados.php">Diputados</a></li>
+        <li>
+            <a href="#general">General ▾</a>
+            <div class="subnav-content">
+                <a href="AlgoAvestruz.html">Algoritmo del Avestruz</a>
+                <a href="AlgoBanqueroSolo.html">Algoritmo del Banquero para un solo Recursos</a>
+                <a href="AlgoBanqueroVarios.html">Algoritmo del Banquero para Varios Recursos</a>
+                <a href="AlgoFilo.html">Problema de los Filosofos Comelones</a>
+                <a href="AlgoLectores.html">Problema de Lectores Escritores</a>
+                <a href="AlgoBarberos.html">Problema del Barbero Durmiente</a>
+            </div>
+        </li>
+        <li><a href="manejoVotaciones.php"> Manejo de Votaciones</a></li>
+        <li><a href="LoginAdmin.php">Regresar a Inicio</a></li>
+    </ul>
+
+    <div class="content">
+        <h1>Algoritmo del Problema de los Filósofos Comelones</h1>
+        <p class="algo-desc">
+            El problema se propuso en el año 1965 por Dijkstra. El mismo además planteó una solución a la sincronización
+            de procesos en un sistema operativo. Este problema representa una situación hipotética, en donde hay 5
+            filósofos y una mesa circular en donde cada filósofo alterna entre comer y pensar. Para comer cada filósofo
+            necesita tener un tenedor en ambas manos, sin embargo entre cada filósofo hay un tenedor, por lo cual
+            necesitan coordinarse para no tomar dos personas un tenedor al mismo tiempo.
+        </p>
+        <p class="algo-desc">
+            El problema tiene variaciones entre la historia que se utiliza para plantear el problema sin embargo
+            mantiene su esencia en cada una. Como se pueden plantear para un comedor de filósofos chinos se puede
+            plantear para una cena italiana, etc, su cualidad importante es el intercambio de recursos.
+        </p>
+        <div id="compiler-container">
+            <img src="./imagenes/EjemplosAlgoritmos/EjemploFilosofosComelones.png"
+                alt="Ejemplo del Problema de los filosofos comelones" height="350" />
+        </div>
+
+        <h2>¿Cómo funciona?</h2>
+        <p class="algo-desc">
+            El propósito de este problema es visualizar cómo los filósofos representantes de procesos, pueden acceder a
+            los
+            tenedores que aluden a los recursos sin caer en un interbloqueo. La solución implementada hace uso de
+            semáforos
+            para gestionar el acceso de los recursos recurrentes. Esto asegura que no hayan interbloqueos o inanición,
+            permitiendo que los filósofos coman siempre que sea posible sin interferir con otro. En el siguiente ejemplo
+            podemos ver la estructura del problema.
+        </p>
+        <div id="compiler-container">
+            <iframe frameBorder="0" height="450px" src="https://onecompiler.com/embed/cpp/43p65a2zg"
+                width="100%"></iframe>
+
+        </div>
+        <p class="algo-desc">
+            Para entender la implementación de los semáforos para el problema de los filósofos comelones es necesario
+            conocer los siguientes componentes (Tanenbaum, 2008):
+        </p>
+        <ol style="max-width: 800px; line-height: 1.5;">
+            <li>Una funcion que cuando un filosofo tenga hambre este cambie su estado e intente adquirir los tenoderes
+                mediante otra funcion que le confirme si los tenedores que necesita estan disponibles. Si no puede ese
+                se bloquea esperando su turno.</li>
+            <li>Como mencionado se necesita la función que comprueba si el filósofo avanza a comer con libertad de tener
+                ambos utensilios o si su vecino está comiendo en ese momento. Sin embargo si se logra obtener ambos
+                tenedores este cambia su estado a comiendo y sucesivamente a que termine de comer.</li>
+            <li>Una vez que este haya terminado de comer debe devolver el tenedor por ende desbloqueando el recurso para
+                que
+                otro proceso lo utilice y siga con el ciclo.</li>
+        </ol>
+
+        <hr style="border: none; border-top: 2px solid #e75480; margin: 20px 0;">
+        <footer>
+            <h2 class="algo-desc">Referencias:</h2>
+            <ul style="max-width: 800px; line-height: 1.5;">
+                <li>Tanenbaum, A. S. (2008). Sistemas operativos modernos (3rd ed.). Pearson Education.</li>
+                <li>Problema de la cena de los filósofos. (2025). Wikipedia. Retrieved 2025, from
+                    https://es.wikipedia.org/wiki/Problema_de_la_cena_de_los_fil%C3%B3sofos</li>
+            </ul>
+        </footer>
+
+
+    </div>
+
+    <script>
+        document.querySelectorAll('.sidenav > li > a[href="#general"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();                       // Evita saltar a #general
+                const sub = this.nextElementSibling;      // div.subnav-content
+                sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+
+</html>

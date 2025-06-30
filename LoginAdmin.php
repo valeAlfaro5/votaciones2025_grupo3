@@ -14,7 +14,7 @@
     <input type="password" name="pass" placeholder="Contraseña" required><br>
     <input type="submit" value="Entrar ">
     <br>
-    <button type="button" class="volver-btn" onclick="window.location.href='Login.php'">Volver</button>
+    <button type="button" class="volver-btn" onclick="window.location.href='Login.php'">Volver</button><br><br>
 </form>
 
 <?php

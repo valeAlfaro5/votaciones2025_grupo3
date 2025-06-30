@@ -135,7 +135,7 @@ function nombreReducido($nombreCompleto) {
 
           if ($Resultado) {
             echo "<p>¡Voto registrado con éxito!</p>";
-            echo "<script>setTimeout(() => window.location.href = 'Login.php', 2000);</script>";
+            echo "<script>setTimeout(() => window.location.href = 'mensajeFinal.html', 1000);</script>";
           } else {
             echo "<p>Error al registrar el voto</p>";
           }

@@ -1,9 +1,52 @@
+<?php
+include('Conexion.php');
+$Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
+
+$diputados = [];
+$ganadores = [];
+$votacionesCanceladas = file_exists("votacion_cancelada.flag");
+
+$partidos = ['PLH' => 1,'PNH' => 2,'PLR' => 3];
+
+function nombreReducido($nombreCompleto) {
+  $partes = preg_split("/\s+/", trim($nombreCompleto));
+  return (isset($partes[0]) ? $partes[0] : '') . ' ' . (isset($partes[2]) ? $partes[2] : '');
+}
+
+if ($Conexion) {
+  foreach ($partidos as $partido => $idPartido) {
+    $Consulta = "SELECT nombre, votos FROM Diputado WHERE partido_id = $idPartido";
+    $Resultado = $Conexion->query($Consulta);
+
+    $diputados[$partido] = [];
+
+    if ($Resultado && $Resultado->num_rows > 0) {
+      while ($fila = $Resultado->fetch_assoc()) {
+        $diputados[$partido][] = [
+          'nombre' => nombreReducido($fila["nombre"]),
+          'votos' => (int)$fila["votos"]
+        ];
+      }
+      
+      usort($diputados[$partido], function($a, $b) {
+        return $b['votos'] - $a['votos'];
+      });
+
+      if (!empty($diputados[$partido])) {
+        $ganadores[$partido] = $diputados[$partido][0]['nombre'];
+      }
+    }
+  }
+} else {
+  echo "Error de Conexion";
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resultados de Elección de Alcaldes</title>
+  <title>Resultados de Elección de Diputados</title>
   <link rel="stylesheet" href="estilos.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
@@ -24,6 +67,7 @@
         <a href="AlgoBarberos.html">Problema del Barbero Durmiente</a>
     </div>
   </li>
+  <li><a href="manejoVotaciones.php"> Manejo de Votaciones</a></li>
   <li><a href="LoginAdmin.php">Regresar a Inicio</a></li>
 </ul>
 
@@ -39,76 +83,34 @@
     <div id="PLH" class="tabcontent">
       <h3>Partido Liberal de Honduras</h3>
       <canvas id="chartPLH" width="400px" height="350px" style="max-width: 900px; background-color: #FFE9EF;"></canvas>
+      <div id="ganadorPLH" class="ganador"></div>
     </div>
 
     <div id="PNH" class="tabcontent">
       <h3>Partido Nacional de Honduras</h3>
-      <canvas id="chartPNH" width="400px" height="350px"style="max-width: 900px; background-color: #FFE9EF;"></canvas>
+      <canvas id="chartPNH" width="400px" height="350px" style="max-width: 900px; background-color: #FFE9EF;"></canvas>
+      <div id="ganadorPNH" class="ganador"></div>
     </div>
 
     <div id="PLR" class="tabcontent">
       <h3>Partido de Libertad y Refundación</h3>
-      <canvas id="chartPLR" width="400px" height="350px"style="max-width: 900px; background-color: #FFE9EF;"></canvas>
+      <canvas id="chartPLR" width="400px" height="350px" style="max-width: 900px; background-color: #FFE9EF;"></canvas>
+      <div id="ganadorPLR" class="ganador"></div>
     </div>
   </div>
 </div>
 
-
-<?php
-    include('Conexion.php');
-    $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
-    $diputados = [];
-    $partidos = ['PLH' => 1,'PNH' => 2,'PLR' => 3];
-
-    function nombreReducido($nombreCompleto) {
-      $partes = preg_split("/\s+/", trim($nombreCompleto));
-      return (isset($partes[0]) ? $partes[0] : '') . ' ' . (isset($partes[2]) ? $partes[2] : '');
-    }
-
-    if ($Conexion) {
-      foreach ($partidos as $partido => $idPartido) {
-        $Consulta = "SELECT nombre, votos FROM Diputado WHERE partido_id = $idPartido";
-        $Resultado = $Conexion->query($Consulta);
-
-        $diputados[$partido] = [];
-
-        if ($Resultado && $Resultado->num_rows > 0) {
-          while ($fila = $Resultado->fetch_assoc()) {
-            $diputados[$partido][] = [
-              'nombre' => nombreReducido($fila["nombre"]),
-              'votos' => (int)$fila["votos"]
-            ];
-          }
-        }
-      }
-    }else{
-      echo "Error de Conexion";
-    }
-
-  ?>
-
 <script>
-  const diputados  = <?php echo json_encode($diputados)?>;
+  const diputados = <?php echo json_encode($diputados); ?>;
+  const ganadores = <?php echo json_encode($ganadores); ?>;
+  const votacionesCanceladas = <?php echo $votacionesCanceladas ? 'true' : 'false'; ?>;
 
-  let chartsLoaded = {
-    PLH: false,
-    PNH: false,
-    PLR: false
-  };
+  let chartsLoaded = { PLH: false, PNH: false, PLR: false };
 
   function openPage(pageName, elmnt, color) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].style.backgroundColor = "";
-    }
-
-    document.getElementById(pageName).style.display = "block";
+    document.querySelectorAll('.tabcontent').forEach(div => div.style.display = 'none');
+    document.querySelectorAll('.tablink').forEach(btn => btn.style.backgroundColor = '');
+    document.getElementById(pageName).style.display = 'block';
     elmnt.style.backgroundColor = color;
 
     if (!chartsLoaded[pageName]) {
@@ -120,42 +122,28 @@
   function loadChart(partido) {
     const datos = diputados[partido];
     const ctx = document.getElementById('chart' + partido).getContext('2d');
-    const xValues = datos.map(d => d.nombre);
-    const yValues = datos.map(d => d.votos);
-    const barColors = datos.map(() => "#FC809F");
-
     new Chart(ctx, {
       type: "bar",
       data: {
-        labels: xValues,
-        datasets: [{
-          backgroundColor: barColors,
-          data: yValues
-        }]
+        labels: datos.map(d => d.nombre),
+        datasets: [{ backgroundColor: "#FC809F", data: datos.map(d => d.votos) }]
       },
       options: {
         legend: { display: false },
-        title: {
-          display: true,
-          text: "Votos por Candidato",
-          fontSize: 22
-        },
+        title: { display: true, text: "Votos por Candidato", fontSize: 22 },
         scales: {
-          xAxes: [{
-            ticks: { fontSize: 18 }
-          }],
-          yAxes: [{
-            ticks: {
-              beginAtZero: true,
-              fontSize: 14
-            }
-          }]
+          xAxes: [{ ticks: { fontSize: 18 } }],
+          yAxes: [{ ticks: { beginAtZero: true, fontSize: 14 } }]
         }
       }
     });
+
+    if (votacionesCanceladas && ganadores[partido]) {
+      const div = document.getElementById("ganador" + partido);
+      div.innerHTML = `<p style="margin-top:10px; font-weight:bold; color:green;">🏆 Ganador: ${ganadores[partido]}</p>`;
+    }
   }
 
-  // Abrir la pestaña por defecto al cargar la página
   document.getElementById("defaultOpen").click();
 </script>
 

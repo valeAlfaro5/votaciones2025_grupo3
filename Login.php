@@ -22,6 +22,16 @@
     include('Conexion.php');
     session_start(); 
 
+    
+      if (file_exists("votacion_cancelada.flag")) {
+      echo "<script>
+          alert('⚠️ Las votaciones han sido canceladas. No se puede iniciar sesión.');
+      </script>";
+      exit();
+      }
+
+
+
     $Conexion = mysqli_connect($Servidor, $Usuario, $Clave, $BD);
     if($Conexion && $_SERVER['REQUEST_METHOD'] === 'POST'){
         $municipio = $_POST['municipio'];

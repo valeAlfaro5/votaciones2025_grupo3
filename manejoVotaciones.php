@@ -58,12 +58,14 @@
             $Consulta1 = "UPDATE Presidente SET votos = 0";
             $Consulta2 = "UPDATE Diputado SET votos = 0";
             $Consulta3 = "UPDATE Alcalde SET votos = 0";
+            $Consulta4 = "DELETE FROM Usuario WHERE pass= NULL OR pass = ''";
 
             $ok1 = mysqli_query($Conexion, $Consulta1);
             $ok2 = mysqli_query($Conexion, $Consulta2);
             $ok3 = mysqli_query($Conexion, $Consulta3);
+            $ok4 = mysqli_query($Conexion, $Consulta4);
 
-            if ($ok1 && $ok2 && $ok3) {
+            if ($ok1 && $ok2 && $ok3 && $ok4) {
                 echo "<p style='color:green;'>✅ Las votaciones han sido reactivadas y los votos reiniciados en todas las tablas.</p>";
             } else {
                 echo "<p style='color:red;'>❌ Error al reiniciar los votos. Verifica las tablas.</p>";

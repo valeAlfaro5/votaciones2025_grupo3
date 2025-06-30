@@ -50,8 +50,10 @@
           $Validar = "SELECT * FROM Usuario WHERE identidad = '$identidad'";
           $Resultado3 = $Conexion->query($Validar);
 
-          if($Resultado3){//si esta se redirige a la pagina
-            echo "<script>setTimeout(() => window.location.href = 'pantallaPresidente.php', 2000);</script>";
+          if($Resultado3 && $Resultado3->num_rows>0){//si esta se redirige a la pagina
+           echo "<script>
+              alert('⚠️ Su voto ya ha sido registrado.');
+          </script>";
           }else{
             //si no esta se ingresan sus datos 
            $ConUser = "INSERT INTO Usuario (usuario, pass, identidad) VALUES ('$usuario', '$pass', '$identidad')";
